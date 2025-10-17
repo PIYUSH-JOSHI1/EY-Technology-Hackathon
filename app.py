@@ -482,12 +482,18 @@ master_agent = None
 sanction_agent = None
 underwriting_agent = None
 
+# Move init_csv_file here so it's defined before use
 def init_csv_file():
-    """Initialize CSV file if it doesn't exist"""
-    if not os.path.exists(CSV_FILE):
-        with open(CSV_FILE, 'w', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-            writer.writerow(CSV_HEADERS)
+	"""Initialize CSV file if it doesn't exist"""
+	if not os.path.exists(CSV_FILE):
+		with open(CSV_FILE, 'w', newline='', encoding='utf-8') as file:
+			writer = csv.writer(file)
+			writer.writerow(CSV_HEADERS)
+
+# Initialize CSV file and agents at module import so handlers have access when running under gunicorn/Render.
+# CSV must be initialized before agents in case agents or startup logic rely on persistent storage.
+init_csv_file()
+master_agent, sanction_agent, underwriting_agent = init_agents()
 
 def save_conversation_to_csv(conversation_id, conversation_data):
     """Save conversation to CSV file"""
