@@ -1,11 +1,20 @@
 import csv
 import os
-from groq import Groq
 
 class UnderwritingAgent:
     """Underwriting Agent - Handles credit evaluation using Groq AI"""
     
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        # Lazy import of Groq to avoid module import-time failures on incompatible versions.
+        try:
+            from groq import Groq
+        except Exception as e:
+            raise ImportError(
+                "Failed to import 'Groq' from package 'groq'. "
+                "This usually means the installed 'groq' package version is incompatible. "
+                "Recommended fix: pip install 'groq==0.3.0' and 'httpx==0.24.1', then restart the app."
+            ) from e
+
         self.credit_scores_file = 'data/credit_scores.csv'
         self.offers_file = 'data/offers.csv'
         self.client = Groq(api_key=os.getenv('GROQ_API_KEY'))
