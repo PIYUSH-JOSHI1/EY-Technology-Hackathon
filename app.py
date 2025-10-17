@@ -66,18 +66,18 @@ def init_agents():
     if not groq_key:
         try:
             from dotenv import load_dotenv
-            # Try to load .env file with explicit error handling
             load_dotenv(override=True)
             groq_key = os.getenv('GROQ_API_KEY')
-        except UnicodeDecodeError:
-            app.logger.error("Invalid .env file encoding. Please recreate the .env file with UTF-8 encoding.")
-        except Exception as e:
-            app.logger.warning(f"Could not load .env file: {e}")
+        except Exception:
             pass
 
     if not groq_key:
-        app.logger.error("GROQ_API_KEY not set. All agents will be unavailable.")
-        return None, None, None
+        app.logger.warning("GROQ_API_KEY not set. Running with mock agents for development.")
+        # Use mocks so /api/chat still responds (demo mode)
+        master = create_mock_agent("MasterAgent")
+        san = create_mock_agent("SanctionAgent")
+        under = create_mock_agent("UnderwritingAgent")
+        return master, san, under
 
     # Try different approaches to initialize agents
     master = init_agent_safely("MasterAgent", AGENT_CLASSES['MasterAgent'])
