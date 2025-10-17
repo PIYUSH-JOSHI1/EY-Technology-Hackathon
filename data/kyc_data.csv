@@ -1,0 +1,11 @@
+customer_id,name,phone,address,email,verified
+CUST001,Rajesh Kumar,9876543210,123 Marine Drive Mumbai,rajesh@email.com,Yes
+CUST002,Priya Singh,9876543211,456 Connaught Place Delhi,priya@email.com,Yes
+CUST003,Amit Patel,9876543212,789 MG Road Bangalore,amit@email.com,Yes
+CUST004,Neha Sharma,9876543213,321 Banjara Hills Hyderabad,neha@email.com,Yes
+CUST005,Vikram Desai,9876543214,654 Koregaon Park Pune,vikram@email.com,Yes
+CUST006,Anjali Gupta,9876543215,987 Anna Salai Chennai,anjali@email.com,Yes
+CUST007,Rohan Verma,9876543216,147 Park Street Kolkata,rohan@email.com,Yes
+CUST008,Divya Nair,9876543217,258 CG Road Ahmedabad,divya@email.com,Yes
+CUST009,Sanjay Rao,9876543218,369 MI Road Jaipur,sanjay@email.com,Yes
+CUST010,Meera Iyer,9876543219,741 MG Road Kochi,meera@email.com,Yes

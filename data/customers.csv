@@ -1,0 +1,11 @@
+customer_id,name,age,city,phone,email,existing_loans,total_outstanding,payment_history,pre_approved_limit
+CUST001,Rajesh Kumar,35,Mumbai,9876543210,rajesh@email.com,1,250000,Good,500000
+CUST002,Priya Singh,28,Delhi,9876543211,priya@email.com,0,0,Excellent,400000
+CUST003,Amit Patel,42,Bangalore,9876543212,amit@email.com,2,500000,Good,600000
+CUST004,Neha Sharma,31,Hyderabad,9876543213,neha@email.com,1,150000,Excellent,450000
+CUST005,Vikram Desai,38,Pune,9876543214,vikram@email.com,0,0,Good,550000
+CUST006,Anjali Gupta,26,Chennai,9876543215,anjali@email.com,1,300000,Fair,350000
+CUST007,Rohan Verma,45,Kolkata,9876543216,rohan@email.com,3,700000,Good,700000
+CUST008,Divya Nair,33,Ahmedabad,9876543217,divya@email.com,0,0,Excellent,480000
+CUST009,Sanjay Rao,40,Jaipur,9876543218,sanjay@email.com,2,400000,Good,550000
+CUST010,Meera Iyer,29,Kochi,9876543219,meera@email.com,1,200000,Excellent,420000
