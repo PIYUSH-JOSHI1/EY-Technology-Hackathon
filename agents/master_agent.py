@@ -1,5 +1,4 @@
 import os
-from groq import Groq
 from .sales_agent import SalesAgent
 from .verification_agent import VerificationAgent
 from .underwriting_agent import UnderwritingAgent
@@ -8,7 +7,18 @@ import json
 class MasterAgent:
     """Master Agent - Orchestrates all worker agents using Groq AI"""
     
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        # Lazy import of Groq to avoid module import-time failures on incompatible versions.
+        try:
+            from groq import Groq
+        except Exception as e:
+            # Provide clear guidance in logs if Groq import fails
+            raise ImportError(
+                "Failed to import 'Groq' from package 'groq'. "
+                "This usually means the installed 'groq' package version is incompatible. "
+                "Recommended fix: pip install 'groq==0.3.0' and 'httpx==0.24.1', then restart the app."
+            ) from e
+
         self.client = Groq(api_key=os.getenv('GROQ_API_KEY'))
         self.model = 'mixtral-8x7b-32768'
         self.sales_agent = SalesAgent()
